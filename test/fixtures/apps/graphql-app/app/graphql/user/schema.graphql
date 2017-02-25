@@ -1,0 +1,5 @@
+type User {
+  id: String!         # id
+  email: String!      # 邮箱
+  name: String!       # 姓名
+}
