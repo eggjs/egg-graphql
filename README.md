@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # egg-graphql
 
 graphql plugin in egg
@@ -39,3 +40,6 @@ $ npm install --save tedious # MSSQL
 ## Usage & configuration
 
 Please refer to documents [graphql](https://eggjs.org/zh-cn/tutorials/graphql.html)
+=======
+# egg-graphql
+>>>>>>> ccf76a2... Initial commit
