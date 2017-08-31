@@ -1,16 +1,32 @@
 'use strict';
 
-const symbolConnector = Symbol('connector');
+const SYMBOL_CONNECTOR = Symbol('connector');
 
 module.exports = {
+
+  /**
+   * connector instance
+   * @member Context#connector
+   */
+
   get connector() {
-    if (!this[symbolConnector]) {
+    /* istanbul ignore else */
+    if (!this[SYMBOL_CONNECTOR]) {
       const connectors = {};
       for (const [ type, Class ] of this.app.connectorClass) {
         connectors[type] = new Class(this);
       }
-      this[symbolConnector] = connectors;
+      this[SYMBOL_CONNECTOR] = connectors;
     }
-    return this[symbolConnector];
+    return this[SYMBOL_CONNECTOR];
+  },
+
+  /**
+   * graphql instance access
+   * @member Context#graphql
+   */
+
+  get graphql() {
+    return this.service.graphql;
   },
 };

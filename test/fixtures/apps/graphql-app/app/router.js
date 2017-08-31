@@ -1,14 +1,14 @@
 'use strict';
 
 module.exports = function(app) {
-  app.get('/test', function* () {
+  app.get('/user', function* () {
     const req = {
       query: `{
-        templates {
-          id
+        user(id: 2) {
+          name
         }
       }`,
     };
-    this.body = yield this.service.graphql(JSON.stringify(req));
+    this.body = yield this.graphql.query(JSON.stringify(req));
   });
 };

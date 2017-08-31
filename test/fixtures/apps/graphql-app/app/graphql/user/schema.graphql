@@ -6,4 +6,5 @@ type User {
   id: String!
   password: String!
   name: String!
+  projects: [Project!]
 }

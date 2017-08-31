@@ -1,9 +1,5 @@
 'use strict';
 
-/**
- * Module dependencies.
- */
-
 module.exports = {
   Query: {
     user(root, { id }, ctx) {

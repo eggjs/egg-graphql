@@ -1,9 +1,5 @@
 'use strict';
 
-/**
- * Module dependencies.
- */
-
 const graphqlHTTP = require('koa-graphql');
 
 
@@ -12,9 +8,11 @@ module.exports = (_, app) => {
     schema: app.schema,
     graphiql: true,
   });
-  const graphQLRouter = app.config.graphql.router || '/graphql';
+  const graphQLRouter = app.config.graphql.router;
 
   return function* (next) {
+
+    /* istanbul ignore else */
     if (this.path === graphQLRouter) {
       return yield mw.call(this);
     }

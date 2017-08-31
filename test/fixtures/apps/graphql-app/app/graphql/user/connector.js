@@ -1,9 +1,5 @@
 'use strict';
 
-/**
- * Module dependencies.
- */
-
 const DataLoader = require('dataloader');
 
 class UserConnector {
@@ -18,6 +14,7 @@ class UserConnector {
       id,
       name: `name${id}`,
       password: `password${id}`,
+      projects: [],
     })));
   }
 

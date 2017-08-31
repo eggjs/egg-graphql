@@ -1,21 +1,12 @@
 'use strict';
 
-/**
- * Module dependencies.
- */
-
 const { execute, formatError } = require('graphql');
 const gql = require('graphql-tag');
 
 module.exports = app => {
   class GraphqlService extends app.Service {
-    constructor(ctx) {
-      super(ctx);
 
-      this.app = ctx.app;
-    }
-
-    * graphql(requestString) {
+    * query(requestString) {
       let result = {};
       const ctx = this.ctx;
 
@@ -40,6 +31,7 @@ module.exports = app => {
         );
 
         // Format any encountered errors.
+        /* istanbul ignore if */
         if (result && result.errors) {
           result.errors = result.errors.map(formatError);
         }
@@ -47,7 +39,7 @@ module.exports = app => {
         this.logger.error(e);
 
         result = {
-          data: null,
+          data: {},
           errors: [ e ],
         };
       }
