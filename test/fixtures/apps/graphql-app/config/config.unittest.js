@@ -6,4 +6,4 @@ exports.grapgql = {
   router: '/graphql',
 };
 
-exports.middleware = ['graphql'];
+exports.middleware = [ 'graphql' ];

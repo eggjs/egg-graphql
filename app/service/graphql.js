@@ -7,7 +7,6 @@
 const { execute, formatError } = require('graphql');
 const gql = require('graphql-tag');
 
-
 module.exports = app => {
   class GraphqlService extends app.Service {
     constructor(ctx) {
