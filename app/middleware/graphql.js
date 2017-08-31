@@ -6,6 +6,7 @@
 
 const graphqlHTTP = require('koa-graphql');
 
+
 module.exports = (_, app) => {
   const mw = graphqlHTTP({
     schema: app.schema,

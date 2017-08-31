@@ -2,7 +2,6 @@
 
 const assert = require('assert');
 const mm = require('egg-mock');
-const request = require('supertest');
 
 describe('test/plugin.test.js', () => {
   let app;
@@ -16,21 +15,20 @@ describe('test/plugin.test.js', () => {
 
   after(mm.restore);
 
-  it('graphql init success', function() {
-    const schema = app.schema;
-    const connector = app.connector;
+  it('graphql service', function* () {
+    const ctx = app.mockContext();
+    const query = JSON.stringify({
+      query: '{ user(id: 1) { name } }',
+    });
+    const resp = yield ctx.service.graphql.graphql(query);
+    assert.deepEqual(resp.data, { user: { name: 'name1' } });
   });
 
-  it('should get data from create', function* () {
-    app.mockCsrf();
+  it('graphql request', function* () {
+    const resp = yield app.httpRequest()
+    .get('/graphql?query=query+getUser($id:Int){user(id:$id){name}}&variables={"id":2}')
+    .expect(200);
 
-    yield request(app.callback())
-    .post('/users')
-    .send({
-      name: 'popomore',
-    });
-    const res = yield request(app.callback())
-      .get('/users');
-    assert(res.body[0].name === 'popomore');
+    assert.deepEqual(resp.body.data, { user: { name: 'name2' } });
   });
 });

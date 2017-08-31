@@ -1,5 +1,5 @@
 'use strict';
 
-exports.grapgql = {
-  router: 'graphql',
+exports.graphql = {
+  router: '/graphql',
 };

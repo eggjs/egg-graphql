@@ -14,7 +14,6 @@ module.exports = app => {
       super(ctx);
 
       this.app = ctx.app;
-      this.logger = ctx.logger;
     }
 
     * graphql(requestString) {

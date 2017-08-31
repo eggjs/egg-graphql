@@ -1,5 +1,9 @@
+type Query {
+  user(id: Int): User
+}
+
 type User {
-  id: String!         # id
-  email: String!      # 邮箱
-  name: String!       # 姓名
+  id: String!
+  password: String!
+  name: String!
 }

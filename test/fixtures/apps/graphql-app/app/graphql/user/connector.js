@@ -12,16 +12,13 @@ class UserConnector {
     this.loader = new DataLoader(this.fetch.bind(this));
   }
 
-  get proxy() {
-    return this.ctx.proxy.user;
-  }
-
   fetch(ids) {
-    return this.proxy.select({
-      where: {
-        id: ids,
-      },
-    });
+    // this.ctx.model.user.find(ids);
+    return Promise.resolve(ids.map(id => ({
+      id,
+      name: `name${id}`,
+      password: `password${id}`,
+    })));
   }
 
   fetchByIds(ids) {
@@ -32,9 +29,6 @@ class UserConnector {
     return this.loader.load(id);
   }
 
-  select(option) {
-    return this.proxy.select(option);
-  }
 }
 
 module.exports = UserConnector;
