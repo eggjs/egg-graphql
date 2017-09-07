@@ -1,0 +1,65 @@
+{
+  "name": "egg-graphql",
+  "version": "0.0.1",
+  "description": "egg graphql plugin",
+  "eggPlugin": {
+    "name": "graphql"
+  },
+  "keywords": [
+    "egg",
+    "graphql",
+    "egg-plugin",
+    "eggPlugin",
+    "orm"
+  ],
+  "dependencies": {
+    "graphql": "^0.11.3",
+    "graphql-tag": "^2.4.2",
+    "graphql-tools": "^1.2.2",
+    "koa-graphql": "^0.6.2"
+  },
+  "devDependencies": {
+    "autod": "^2.9.0",
+    "dataloader": "^1.3.0",
+    "egg": "^1.7.0",
+    "egg-bin": "^4.3.0",
+    "egg-ci": "^1.8.0",
+    "egg-mock": "^3.10.0",
+    "eslint": "^4.6.1",
+    "eslint-config-egg": "^5.1.1",
+    "mysql": "^2.12.0",
+    "supertest": "^3.0.0",
+    "webstorm-disable-index": "^1.2.0"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "scripts": {
+    "test": "npm run lint -- --fix && npm run test-local",
+    "test-local": "egg-bin test",
+    "cov": "egg-bin cov",
+    "lint": "eslint .",
+    "ci": "npm run lint && npm run cov",
+    "autod": "autod"
+  },
+  "files": [
+    "app.js",
+    "agent.js",
+    "config",
+    "app",
+    "lib"
+  ],
+  "ci": {
+    "version": "6, 8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eggjs/egg-graphql.git"
+  },
+  "bugs": {
+    "url": "https://github.com/eggjs/egg/issues"
+  },
+  "homepage": "https://github.com/eggjs/egg-graphql#readme",
+  "author": "jtyjty99999",
+  "license": "MIT"
+}
