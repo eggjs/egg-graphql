@@ -15,6 +15,15 @@ describe('test/plugin.test.js', () => {
 
   after(mm.restore);
 
+  it('should return empty array', function* () {
+    const ctx = app.mockContext();
+    const query = JSON.stringify({
+      query: '{ projects }',
+    });
+    const resp = yield ctx.graphql.query(query);
+    assert.deepEqual(resp.data.projects, []);
+  });
+
   it('should return user with no projects', function* () {
     const ctx = app.mockContext();
     const query = JSON.stringify({

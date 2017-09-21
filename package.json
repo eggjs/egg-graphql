@@ -16,7 +16,8 @@
     "graphql": "^0.11.3",
     "graphql-tag": "^2.4.2",
     "graphql-tools": "^1.2.2",
-    "koa-graphql": "^0.6.2"
+    "koa-graphql": "^0.6.2",
+    "lodash": "4.17.4"
   },
   "devDependencies": {
     "autod": "^2.9.0",
