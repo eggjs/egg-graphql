@@ -13,7 +13,6 @@ module.exports = app => {
       try {
         const params = JSON.parse(requestString);
         const { query, variables, operationName } = params;
-
         // GraphQL source.
         // https://github.com/apollostack/graphql-tag#caching-parse-results
         const documentAST = gql`${query}`;
