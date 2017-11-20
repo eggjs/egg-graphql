@@ -57,6 +57,8 @@ exports.graphql = {
   app: true,
   // 是否加载到 agent 上，默认关闭
   agent: false,
+  // 是否加载开发者工具 graphiql, 默认开启
+  graphiql: true,
 };
 ```
 

@@ -1,0 +1,10 @@
+type MutationCommonRes {
+  success: Boolean
+  message: String
+}
+type Mutation {
+  # Token表
+  createToken(input: CreateTokenReq): MutationCommonRes
+  updateToken(input: UpdateTokenReq): MutationCommonRes
+  deleteToken(input: DeleteTokenReq): MutationCommonRes
+}
