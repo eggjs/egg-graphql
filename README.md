@@ -1,4 +1,4 @@
-title: GraphQL
+# egg-graphql
 ---
 
 [GraphQL](http://facebook.github.io/graphql/)使用 Schema 来描述数据，并通过制定和实现 GraphQL 规范定义了支持 Schema 查询的 DSQL （Domain Specific Query Language，领域特定查询语言，由 FACEBOOK 提出。
@@ -25,7 +25,7 @@ title: GraphQL
 
 我们也会使用 [GraphQL Server](http://dev.apollodata.com/tools/graphql-server/index.html) 来完成 GraphQL 查询语言 DSQL 的解析。
 
-同时我们会使用 [dataloader](https://github.com/facebook/dataloader) 来优化数据缓存。
+同时我们会使用 [dataloader](https://github.com/facebook/dataloader) 来优化数据缓存。(例子可见 `test/fixtures/app/graphql-app` 目录)
 
 这些我们都会集成到 [egg-graphql](https://github.com/eggjs/egg-graphql) 插件中。
 
@@ -57,8 +57,12 @@ exports.graphql = {
   app: true,
   // 是否加载到 agent 上，默认关闭
   agent: false,
-  // 是否加载开发者工具 graphiql, 默认开启
+  // 是否加载开发者工具 graphiql, 默认开启。路由同 router 字段。使用浏览器打开该可见。
   graphiql: true,
+  // graphQL 路由前的拦截器
+  onPreGraphQL: function* (ctx) {},
+  // 开发工具 graphiQL 路由前的拦截器，建议用于做权限操作(如只提供开发者使用)
+  onPreGraphiQL: function* (ctx) {},
 };
 ```
 

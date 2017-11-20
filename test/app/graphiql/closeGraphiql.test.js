@@ -25,6 +25,6 @@ describe('test/closeGraphiql.test.js', () => {
     });
     return app.httpRequest()
       .get('/graphql')
-      .expect('{"errors":[{"message":"Must provide query string."}]}');
+      .expect('GET query missing.');
   });
 });
