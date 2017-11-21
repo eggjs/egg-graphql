@@ -13,7 +13,7 @@
 
 也就是说，通过以上的三个特性，当需求发生变化，客户端只需要编写能满足新需求的查询结构，如果服务端能提供的数据满足需求，服务端代码几乎不需要做任何的修改。
 
-本篇教程不会过多介绍 GraphQL 的概念，而会着重于讲解如何通过 eggjs 来搭建 GraphQL 查询服务。如果对 GraphQL 感兴趣可以参考文末的参考链接。
+目前 egg-graphql 已经完全支持在 egg 中使用 GraphQL 查询语法，可直接查看文末参考链接，下文为插件设计。
 
 ## 技术选型
 
@@ -91,4 +91,8 @@ exports.graphql = {
 
 ## 参考文章
 
-[graphql官网]: http://facebook.github.io/graphql
+- [graphql官网]: http://facebook.github.io/graphql
+
+- [如何在egg中使用graphql]: https://zhuanlan.zhihu.com/p/30604868
+
+- [项目例子：结合sequelize]: https://github.com/freebyron/egg-graphql-boilerplate 
