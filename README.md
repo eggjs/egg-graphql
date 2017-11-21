@@ -96,3 +96,7 @@ exports.graphql = {
 - [如何在egg中使用graphql]: https://zhuanlan.zhihu.com/p/30604868
 
 - [项目例子：结合sequelize]: https://github.com/freebyron/egg-graphql-boilerplate 
+
+## 协议
+
+MIT
