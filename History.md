@@ -1,4 +1,11 @@
 
+2.0.0 / 2017-11-22
+==================
+
+  * feat: use async function and support egg@2 (#10)
+  * docs: update docs
+  * docs: add readme (#9)
+
 1.3.0 / 2017-11-20
 ==================
 
