@@ -4,8 +4,8 @@ exports.keys = 'plugin-graphql';
 exports.middleware = [ 'graphql' ];
 exports.graphql = {
   graphiql: true,
-  * onPreGraphiQL(ctx) {
-    yield ctx.service.user.getUserList();
+  async onPreGraphiQL(ctx) {
+    await ctx.service.user.getUserList();
     return {};
   },
 };

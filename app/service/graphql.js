@@ -6,7 +6,7 @@ const gql = require('graphql-tag');
 module.exports = app => {
   class GraphqlService extends app.Service {
 
-    * query(requestString) {
+    async query(requestString) {
       let result = {};
       const ctx = this.ctx;
 
@@ -20,7 +20,7 @@ module.exports = app => {
         const schema = this.app.schema;
 
         // http://graphql.org/graphql-js/execution/#execute
-        result = yield execute(
+        result = await execute(
           schema,
           documentAST,
           null,

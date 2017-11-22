@@ -1,5 +1,5 @@
-
 'use strict';
+// 在 connector 里面可以调用 await this.ctx.service.xxx() 去获取数据
 class TokenConnector {
   constructor(ctx) {
     this.ctx = ctx;

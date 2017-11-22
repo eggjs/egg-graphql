@@ -15,27 +15,27 @@ describe('test/plugin.test.js', () => {
 
   after(mm.restore);
 
-  it('should return empty array', function* () {
+  it('should return empty array', async () => {
     const ctx = app.mockContext();
     const query = JSON.stringify({
       query: '{ projects }',
     });
-    const resp = yield ctx.graphql.query(query);
+    const resp = await ctx.graphql.query(query);
     assert.deepEqual(resp.data.projects, []);
   });
 
-  it('should return user with no projects', function* () {
+  it('should return user with no projects', async () => {
     const ctx = app.mockContext();
     const query = JSON.stringify({
       query: '{ user(id: 3) { projects } }',
     });
-    const resp = yield ctx.graphql.query(query);
+    const resp = await ctx.graphql.query(query);
     assert.deepEqual(resp.data, { user: { projects: [] } });
   });
 
-  it('should return error', function* () {
+  it('should return error', async () => {
     const ctx = app.mockContext();
-    const resp = yield ctx.graphql.query('');
+    const resp = await ctx.graphql.query('');
     assert.deepEqual(resp.data, {});
     assert.equal(resp.errors[0].message, 'Unexpected end of JSON input');
   });

@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(app) {
-  app.get('/user', function* () {
+  app.get('/user', async ctx => {
     const req = {
       query: `{
         user(id: 2) {
@@ -9,6 +9,6 @@ module.exports = function(app) {
         }
       }`,
     };
-    this.body = yield this.graphql.query(JSON.stringify(req));
+    ctx.body = await ctx.graphql.query(JSON.stringify(req));
   });
 };

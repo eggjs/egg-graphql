@@ -3,34 +3,33 @@
 const { graphqlKoa, graphiqlKoa } = require('apollo-server-koa');
 
 module.exports = (_, app) => {
-  const graphQLRouter = app.config.graphql.router;
+  const options = app.config.graphql;
+  const graphQLRouter = options.router;
   let graphiql = true;
 
-  if (app.config.graphql.graphiql === false) {
+  if (options.graphiql === false) {
     graphiql = false;
   }
 
-  return function* (next) {
+  return async (ctx, next) => {
     /* istanbul ignore else */
-    if (this.path === graphQLRouter) {
-      if (this.request.accepts([ 'json', 'html' ]) === 'html' && graphiql) {
-        if (app.config.graphql.onPreGraphiQL) {
-          yield app.config.graphql.onPreGraphiQL(this);
+    if (ctx.path === graphQLRouter) {
+      if (ctx.request.accepts([ 'json', 'html' ]) === 'html' && graphiql) {
+        if (options.onPreGraphiQL) {
+          await options.onPreGraphiQL(ctx);
         }
         return graphiqlKoa({
           endpointURL: graphQLRouter,
-        })(this);
+        })(ctx);
       }
-
-      if (app.config.graphql.onPreGraphQL) {
-        yield app.config.graphql.onPreGraphQL(this);
+      if (options.onPreGraphQL) {
+        await options.onPreGraphQL(ctx);
       }
       return graphqlKoa({
         schema: app.schema,
-        context: this,
-      })(this);
+        context: ctx,
+      })(ctx);
     }
-
-    yield next;
+    await next();
   };
 };

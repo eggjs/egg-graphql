@@ -1,7 +1,16 @@
-
 'use strict';
+
+const moment = require('moment');
+
 module.exports = {
-  Token: {},
+  Token: {
+    gmtCreate: obj => {
+      return moment(obj.gmtCreate).format('YYYY-MM-DD HH:mm:ss');
+    },
+    gmtModified: obj => {
+      return moment(obj.gmtModified).format('YYYY-MM-DD HH:mm:ss');
+    },
+  },
   Query: {
     getTokenById: (root, args, ctx) => {
       const params = args.input;
