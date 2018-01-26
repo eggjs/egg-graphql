@@ -27,6 +27,8 @@
 
 同时我们会使用 [dataloader](https://github.com/facebook/dataloader) 来优化数据缓存。(例子可见 `test/fixtures/app/graphql-app` 目录)
 
+GraphQl Tools 新增了对自定义 directive 的支持，通过 directive 我们可以实现一些切面相关的事情：权限、缓存等。(例子可见 `test/fixtures/app/graphql-app/app/graphql/directives` 目录)
+
 这些我们都会集成到 [egg-graphql](https://github.com/eggjs/egg-graphql) 插件中。
 
 ### 安装与配置
@@ -76,6 +78,8 @@ exports.graphql = {
 .
 ├── app
 │   ├── graphql
+|   |   ├── common
+|   |   |   └── directive.js  // 自定义directive
 │   │   ├── project
 │   │   │   └── schema.graphql
 │   │   └── user  // 一个graphql模型

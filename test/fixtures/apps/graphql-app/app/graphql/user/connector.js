@@ -13,6 +13,7 @@ class UserConnector {
     return Promise.resolve(ids.map(id => ({
       id,
       name: `name${id}`,
+      upperName: `name${id}`,
       password: `password${id}`,
       projects: [],
     })));

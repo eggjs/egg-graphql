@@ -40,4 +40,11 @@ describe('test/plugin.test.js', () => {
     assert.equal(resp.errors[0].message, 'Unexpected end of JSON input');
   });
 
+  it('should return name\'s upperCase with @upper directive', async () => {
+    const ctx = app.mockContext();
+    const resp = await ctx.graphql.query(JSON.stringify({
+      query: '{ user(id: 1) { upperName } }',
+    }));
+    assert.deepEqual(resp.data, { user: { upperName: 'NAME1' } });
+  });
 });
