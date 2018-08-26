@@ -15,7 +15,7 @@ describe('test/closeGraphiql.test.js', () => {
 
   after(mm.restore);
 
-  it('should get graphql json response', function* () {
+  it('should get graphql json response', async () => {
     app.mockHttpclient('/graphql', 'GET', {
       headers: {
         'accept-language': 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
@@ -23,7 +23,8 @@ describe('test/closeGraphiql.test.js', () => {
         'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:57.0) Gecko/20100101 Firefox/57.0',
       },
     });
-    return app.httpRequest()
+
+    await app.httpRequest()
       .get('/graphql')
       .expect('GET query missing.');
   });

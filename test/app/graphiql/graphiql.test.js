@@ -15,14 +15,13 @@ describe('test/graphiql.test.js', () => {
 
   after(mm.restore);
 
-  it('should get graphiql html response', function* () {
+  it('should get graphiql html response', async () => {
     app.mockHttpclient('/graphql', 'GET', {});
-    return app.httpRequest()
+    const result = await app.httpRequest()
       .get('/graphql')
       .set('Accept', 'text/html')
-      .expect(200)
-      .then(response => {
-        assert(response.type, 'text/html');
-      });
+      .expect(200);
+
+    assert(result.type, 'text/html');
   });
 });
