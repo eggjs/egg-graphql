@@ -47,4 +47,12 @@ describe('test/plugin.test.js', () => {
     }));
     assert.deepEqual(resp.data, { user: { upperName: 'NAME1' } });
   });
+
+  it('should return name\'s lowerCase with schemaDirectives', async () => {
+    const ctx = app.mockContext();
+    const resp = await ctx.graphql.query(JSON.stringify({
+      query: '{ user(id: 1) { lowerName } }',
+    }));
+    assert.deepEqual(resp.data, { user: { lowerName: 'name1' } });
+  });
 });

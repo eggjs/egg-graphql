@@ -8,5 +8,6 @@ type User {
   password: String!
   name: String!
   upperName: String @upper
+  lowerName: String @lowerCase
   projects: [Project!]
 }

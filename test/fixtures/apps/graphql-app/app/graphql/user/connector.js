@@ -14,6 +14,7 @@ class UserConnector {
       id,
       name: `name${id}`,
       upperName: `name${id}`,
+      lowerName: `name${id}`,
       password: `password${id}`,
       projects: [],
     })));
