@@ -1,9 +1,12 @@
 'use strict';
 
-module.exports = {
-  Query: {
-    projects() {
-      return [];
+module.exports = app => {
+  return {
+    Query: {
+      projects() {
+        console.log(app);
+        return [];
+      },
     },
-  },
+  };
 };
