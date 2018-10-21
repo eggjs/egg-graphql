@@ -1,4 +1,9 @@
 
+2.3.0 / 2018-10-21
+==================
+
+  * feat:pass app context as argument to create resolver. (#20)
+
 2.2.0 / 2018-09-27
 ==================
 
