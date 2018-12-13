@@ -66,6 +66,9 @@ exports.graphql = {
   // 开发工具 graphiQL 路由前的拦截器，建议用于做权限操作(如只提供开发者使用)
   onPreGraphiQL: function* (ctx) {},
 };
+
+// 添加中间件拦截请求
+exports.middleware = [ 'graphql' ];
 ```
 
 ## 使用方式
