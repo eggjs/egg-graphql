@@ -1,6 +1,6 @@
 {
   "name": "egg-graphql",
-  "version": "2.2.0",
+  "version": "2.4.0",
   "description": "egg graphql plugin",
   "eggPlugin": {
     "name": "graphql"
