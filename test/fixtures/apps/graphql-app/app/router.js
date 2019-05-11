@@ -11,4 +11,15 @@ module.exports = function(app) {
     };
     ctx.body = await ctx.graphql.query(JSON.stringify(req));
   });
+
+  app.get('/framework', async ctx => {
+    const req = {
+      query: `{
+        framework(id: 2) {
+          name
+        }
+      }`,
+    };
+    ctx.body = await ctx.graphql.query(JSON.stringify(req));
+  });
 };

@@ -55,4 +55,13 @@ describe('test/plugin.test.js', () => {
     }));
     assert.deepEqual(resp.data, { user: { lowerName: 'name1' } });
   });
+
+  it('should return framework with no projects', async () => {
+    const ctx = app.mockContext();
+    const query = JSON.stringify({
+      query: '{ framework(id: 3) { projects } }',
+    });
+    const resp = await ctx.graphql.query(query);
+    assert.deepEqual(resp.data, { framework: { projects: [] } });
+  });
 });

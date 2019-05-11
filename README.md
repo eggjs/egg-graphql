@@ -80,22 +80,31 @@ exports.middleware = [ 'graphql' ];
 ```
 .
 ├── app
-│   ├── graphql
-|   |   ├── common
-|   |   |   └── directive.js  // 自定义directive
-│   │   ├── project
-│   │   │   └── schema.graphql
+│   ├── graphql
+│   │   ├── common
+│   │   │   └── directive.js  // 自定义directive
+│   │   ├── project
+│   │   │   └── schema.graphql
 │   │   ├── schemaDirectives
 │   │   │   └── schemaDirective.js  // 自定义 SchemaDirective
 │   │   │ 
-│   │   └── user  // 一个graphql模型
-│   │       ├── connector.js  
-│   │       ├── resolver.js
-│   │       └── schema.graphql
-│   ├── model
-│   │   └── user.js
-│   ├── public
-│   └── router.js
+│   │   ├── user  // 一个graphql模型
+│   │   │   ├── connector.js  
+│   │   │   ├── resolver.js
+│   │   │   └── schema.graphql
+│   │   ├── group //自定义模型组目录
+│   │   │   ├── framework  // 一个graphql模型
+│   │   │   │ 	├── connector.js  
+│   │   │   │ 	├── resolver.js
+│   │   │   │ 	└── schema.graphql
+│   │   │   └── workspace  // 一个graphql模型
+│   │   │    	├── connector.js  
+│   │   │    	├── resolver.js
+│   │   │    	└── schema.graphql
+│   ├── model
+│   │   └── user.js
+│   ├── public
+│   └── router.js
 
 ```
 

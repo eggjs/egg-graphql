@@ -1,6 +1,7 @@
 type Query {
   user(id: Int): User
   projects: [Project!]
+  framework(id: Int): Framework
 }
 
 type User {
