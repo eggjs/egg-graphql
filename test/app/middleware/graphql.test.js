@@ -62,3 +62,45 @@ describe('test/app/middleware.test.js', () => {
     });
   });
 });
+
+describe('test/app/middleware.test.js', () => {
+  let app;
+
+  before(() => {
+    app = mm.app({
+      baseDir: 'apps/default-schema-app',
+    });
+    return app.ready();
+  });
+
+  after(mm.restore);
+  it('should add user', async () => {
+    const query = `
+    mutation addUser{
+      addUser(name:"小李",password:"123456"){
+        id
+        name
+        password
+      }
+    }
+    `;
+    app.mockCsrf();
+
+    await app.httpRequest()
+      .post('/graphql')
+      .send({
+        query,
+      })
+      .expect(200);
+
+    const res = await app.httpRequest()
+      .get('/graphql?query=query+getUser($id:Int){user(id:$id){id\nname\npassword}}&variables={"id":1}')
+      .expect(200);
+    assert.deepEqual(res.body.data.user, {
+      id: 1,
+      name: '小李',
+      password: '123456',
+    });
+
+  });
+});
