@@ -45,21 +45,31 @@ module.exports = (_, app) => {
   return async (ctx, next) => {
     /* istanbul ignore else */
     if (ctx.path === graphQLRouter) {
+      const {
+        onPreGraphiQL,
+        onPreGraphQL,
+        apolloServerOptions,
+      } = options;
       if (ctx.request.accepts([ 'json', 'html' ]) === 'html' && graphiql) {
-        if (options.onPreGraphiQL) {
-          await options.onPreGraphiQL(ctx);
+        if (onPreGraphiQL) {
+          await onPreGraphiQL(ctx);
         }
         return graphiqlKoa({
           endpointURL: graphQLRouter,
         })(ctx);
       }
-      if (options.onPreGraphQL) {
-        await options.onPreGraphQL(ctx);
+      if (onPreGraphQL) {
+        await onPreGraphQL(ctx);
       }
-      return graphqlKoa({
-        schema: app.schema,
-        context: ctx,
-      })(ctx);
+      const serverOptions = Object.assign(
+        {},
+        apolloServerOptions,
+        {
+          schema: app.schema,
+          context: ctx,
+        }
+      );
+      return graphqlKoa(serverOptions)(ctx);
     }
     await next();
   };
