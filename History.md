@@ -1,3 +1,12 @@
+
+2.8.0 / 2020-05-13
+==================
+
+**features**
+  * [[`d6618f9`](http://github.com/eggjs/egg-graphql/commit/d6618f9c043cdb55662d36ed178b8df155c3c2e1)] - feat: Automatically control Cache with LRU (#32) (KorsChen <<evanglechen@icloud.com>>),
+
+**others**
+  * [[`44f289a`](http://github.com/eggjs/egg-graphql/commit/44f289aad62a404707f7ea46e68ab2cb25641215)] - chore: revert history && update ci (#33) (TZ | 天猪 <<atian25@qq.com>>)
 2.7.1 / 2020-05-06
 ==================
 
