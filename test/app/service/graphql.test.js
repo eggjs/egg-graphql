@@ -64,4 +64,62 @@ describe('test/plugin.test.js', () => {
     const resp = await ctx.graphql.query(query);
     assert.deepEqual(resp.data, { framework: { projects: [] } });
   });
+
+  it('user operations with fragments', async () => {
+    const ctx = app.mockContext();
+    const query = `query {
+      drumsets: products(product_category_id: 1) {
+        ...ProductCommonFields
+        prices
+      }
+    
+      cymbals: products(product_category_id: 2) {
+        ...ProductCommonFields
+      }
+    }
+    
+    fragment ProductCommonFields on Product {
+      id
+      name
+      price
+    }`;
+    const resp = await ctx.graphql.query(JSON.stringify({
+      query,
+    }));
+    assert.deepEqual(resp.data, {});
+  });
+
+  it('query from cache', async () => {
+    const ctx = app.mockContext();
+    await ctx.graphql.query(JSON.stringify({
+      query: '{ user(id: 1) { lowerName } }',
+    }));
+    const cache = await ctx.graphql.query(JSON.stringify({
+      query: '{ user(id: 1) { lowerName } }',
+    }));
+    assert.deepEqual(cache.data, { user: { lowerName: 'name1' } });
+  });
+
+  it('user operations with fragments', async () => {
+    const ctx = app.mockContext();
+    const query = `query {
+      drumsets: products(id: 1) {
+        ...ProductCommonFields
+        prices
+      }
+    
+      cymbals: products(id: 2) {
+        ...ProductCommonFields
+      }
+    }
+    
+    fragment ProductCommonFields on Product {
+      id
+    }
+    `;
+    const resp = await ctx.graphql.query(JSON.stringify({
+      query,
+    }));
+    assert.deepEqual(resp.data, {});
+  });
 });
